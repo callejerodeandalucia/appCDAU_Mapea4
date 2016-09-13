@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+
+   <title>CDAU</title>
+   <link href="assets/css/mapea.ol3.min.css" rel="stylesheet" />
+   <link type="text/css" rel="stylesheet" href="plugins/searchstreetgeosearch/searchstreetgeosearch.min.css"></link>
+   <style type="text/css">
+      html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+      }
+   </style>
+</head>
+
+<body>
+
+   <div id="mapajs" class="container" class="m-container m-mapea-container"></div>
+  
+   <script type="text/javascript" src="cordova.js"></script>
+   <script src="js/mapea.ol3.min.js "></script>
+   <script src="js/configuration.js "></script>
+   <script type="text/javascript" src="plugins/searchstreetgeosearch/mapea.searchstreetgeosearch.ol3.min.js"></script>
+   <script type="text/javascript">
+     M.proxy(false);
+     var mapajs = M.map({
+		    controls:["location"],
+		    container:"mapajs",
+		    wmcfiles: ["http://www.callejerodeandalucia.es/wmc/context_cdau_callejero.xml*Callejero", "http://www.callejerodeandalucia.es/wmc/context_cdau_satelite.xml*Satélite"]})
+		      .addPlugin(new M.plugin.SearchstreetGeosearch()); //conf por defecto
+     
+     mapajs.on(M.evt.COMPLETED, navigator.splashscreen.hide());
+   </script>
+</body>
+
+</html>
